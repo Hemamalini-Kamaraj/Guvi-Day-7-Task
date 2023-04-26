@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guvi Day 7 Task</title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <h2>Solving problems using Array functions on the rest countries data</h2>
+        <h2>d. Printing total population of countries using reduce function</h2>
+        <script>
+            console.log("Welcome to HTML JS")
+
+            
+
+            function handleData(){
+                let data = JSON.parse(this.responseText)
+                console.log(data)
+
+                let population = data.reduce((acc,element) => {
+                    return acc+element.population
+                },0)
+                console.log(`Total Population of Countries - ${population}`)
+            }
+            const req = new XMLHttpRequest();
+            req.addEventListener('load',handleData)
+            req.open("GET","https://restcountries.com/v3.1/all")
+            req.send()
+        </script>
+    </body>
+</html>
