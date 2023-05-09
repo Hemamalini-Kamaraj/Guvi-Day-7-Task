@@ -6,22 +6,22 @@
     <body>
         <h1>Hello</h1>
         <h2>Solving problems using Array functions on the rest countries data</h2>
-        <h2>e. Printing tthe countries which are using US dollars as a currency</h2>
+        <h2>e. Printing the countries which are using US dollars as a currency</h2>
         <script>
-            console.log("Welcome to HTML JS")
-
-            
 
             function handleData(){
                 let data = JSON.parse(this.responseText)
-                console.log(data)
 
-                for(i=0;i<data.length;i++){
-                    if(data[i].currencies === "United States dollar")
-                        {
-                        console.log(data[i].currencies)
+                let country = data.filter((e)=> {
+                    for(let i in e.currencies) {
+                        if(e.currencies[i].name=="United States dollar") {
+                            return true
+                        } else {
+                            return false
                         }
-                }
+                    }
+                })
+                console.log(country)
             }
             const req = new XMLHttpRequest();
             req.addEventListener('load',handleData)
